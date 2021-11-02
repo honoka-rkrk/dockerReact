@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  node:
+    build:
+      context: .
+    tty: true
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/reactapp
+      - yarn-cache:/usr/local/share/.cache/yarn/v6
+    command: sh -c "cd sample && yarn start"
+    ports:
+      - "3000:3000"
+
+volumes: 
+  yarn-cache:
